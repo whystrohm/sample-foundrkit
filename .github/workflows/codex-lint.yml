@@ -26,6 +26,13 @@ jobs:
     steps:
       - name: Checkout PR head
         uses: actions/checkout@v4
+        with:
+          # Full history so `git diff BASE...HEAD` can find changed files
+          # between the PR base and the merge commit. Shallow clones
+          # (default depth=1) leave the parents of the merge commit
+          # unreachable and the diff returns nothing — looks like a
+          # green build on a PR that should fail.
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v4
