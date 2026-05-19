@@ -6,7 +6,7 @@
     {
       "id": "no-em-dashes",
       "level": "block",
-      "description": "No em-dashes (—) or &mdash; HTML entities. Use periods, commas, or colons. Em-dashes are the single most reliable AI tell."
+      "description": "No em-dash characters or &mdash; HTML entities. Use periods, commas, or colons. Em-dashes are the single most reliable AI tell."
     },
     {
       "id": "no-forbidden-words",

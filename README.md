@@ -1,4 +1,4 @@
-# Sample Foundrkit — Linear
+# Sample Foundrkit for Linear
 
 A working public Foundrkit for [linear.app](https://linear.app/), built as a reference implementation for the format. Real rules, real linter, real CI. The Action on this repo blocks any PR that violates the Foundrkit.
 
@@ -69,7 +69,7 @@ Block rules (no em-dashes, no forbidden words) fail CI with exit code 1. Warn ru
 
 There's a permanent open pull request on this repo that demonstrates the firewall catching a slop draft:
 
-**[`PR #1` — Firewall demo, slop draft fails the Foundrkit](https://github.com/whystrohm/sample-foundrkit/pull/1)**
+**[`PR #1`: Firewall demo, slop draft fails the Foundrkit](https://github.com/whystrohm/sample-foundrkit/pull/1)**
 
 The PR adds `examples/bad-post.md` with deliberate violations. The Action runs and fails. The PR is not mergeable. It stays open forever as the demonstration.
 

@@ -30,7 +30,7 @@ jobs:
           # Full history so `git diff BASE...HEAD` can find changed files
           # between the PR base and the merge commit. Shallow clones
           # (default depth=1) leave the parents of the merge commit
-          # unreachable and the diff returns nothing — looks like a
+          # unreachable and the diff returns nothing. Looks like a
           # green build on a PR that should fail.
           fetch-depth: 0
 
@@ -50,7 +50,7 @@ jobs:
           git fetch origin "${{ github.event.pull_request.base.ref }}" --depth=1 2>/dev/null || true
           FILES=$(git diff --name-only "$BASE"...HEAD -- '*.md' '*.mdx' 2>/dev/null || true)
           if [ -z "$FILES" ]; then
-            echo "No markdown changes in this PR — skipping lint."
+            echo "No markdown changes in this PR. Skipping lint."
             echo "files=" >> "$GITHUB_OUTPUT"
           else
             echo "Will lint:"

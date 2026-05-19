@@ -1,5 +1,5 @@
 /**
- * Sample Foundrkit — Linear.
+ * Sample Foundrkit for Linear.
  *
  * The brand-level language constants any AI writing assistant should
  * load before drafting copy for this brand. Single source of truth for
@@ -71,7 +71,7 @@ export const foundrkit: BrandFoundrkit = {
     {
       name: "Vulnerability",
       score: 2,
-      note: "Process and uncertainty are rarely surfaced. When they are, it's a deliberate choice — not the default.",
+      note: "Process and uncertainty are rarely surfaced. When they are, it's a deliberate choice, not the default.",
     },
   ],
 
@@ -81,13 +81,13 @@ export const foundrkit: BrandFoundrkit = {
     "No enthusiasm verbs (thrilled, excited, delighted, proud).",
     "Concrete subjects over abstract noun phrases.",
     "Product specifics (Linear Cycles, Linear Roadmap, GraphQL API) over generic 'platform' / 'solution' / 'experience' language.",
-    "Numbers stated bare — '25,000 companies' not 'thousands of companies' or 'rapidly growing user base'.",
+    "Numbers stated bare: '25,000 companies' not 'thousands of companies' or 'rapidly growing user base'.",
   ],
 
   approvedPatterns: [
     "Subject + active verb + concrete object.",
     "Claim followed immediately by proof (named decision, named number, or named system).",
     "Tight juxtaposition: the old way / the new way. One sentence each.",
-    "Founder voice — when used — references a specific team decision, not a vision.",
+    "Founder voice, when used, references a specific team decision, not a vision.",
   ],
 } as const;

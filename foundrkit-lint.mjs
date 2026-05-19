@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * foundrkit-lint — the firewall the GitHub Action runs on every PR.
+ * foundrkit-lint: the firewall the GitHub Action runs on every PR.
  *
  * Reads foundrkit.rules.json + forbidden.json and applies them to one
  * or more markdown files. Exits 0 if every file passes every block
@@ -19,7 +19,7 @@
  *
  *   1 file checked, 2 block violations, 1 warning. FAILED.
  *
- * Zero external dependencies — runs on any Node 18+ without npm install,
+ * Zero external dependencies. Runs on any Node 18+ without npm install,
  * so the GitHub Action can use a bare `node` step.
  */
 
@@ -149,7 +149,7 @@ function checkFile(filePath) {
   }
 
   // ── no-three-adjective-stacks ────────────────────────────
-  // Heuristic — looks for three or more comma-separated adjectives
+  // Heuristic: looks for three or more comma-separated adjectives
   // ending in a noun. Catches the textbook "innovative, robust, and
   // seamless solution" stack without trying to do real NLP.
   const adjStackRe =
