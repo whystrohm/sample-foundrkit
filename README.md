@@ -69,9 +69,43 @@ Block rules (no em-dashes, no forbidden words) fail CI with exit code 1. Warn ru
 
 There's a permanent open pull request on this repo that demonstrates the firewall catching a slop draft:
 
-**[`PR #1 — Bad-post firewall demonstration`](https://github.com/whystrohm/sample-codex/pull/1)**
+**[`PR #1 — Firewall demo, slop draft fails the Codex`](https://github.com/whystrohm/sample-codex/pull/1)**
 
-The PR adds `examples/bad-post.md` with deliberate violations (em-dashes, forbidden words, AI-era clutter, enthusiasm verbs, abstract noun clusters). The Action runs on the PR and fails with the violation list in the CI log. The PR is not mergeable. It will stay open forever as the demonstration.
+The PR adds `examples/bad-post.md` with deliberate violations. The Action runs and fails. The PR is not mergeable. It stays open forever as the demonstration.
+
+![codex-lint Action failed on PR #1 — 1 error, 1 warning, status Failure](./firewall-demo-failed-action.png)
+
+What the CI log shows (excerpted):
+
+```
+examples/bad-post.md
+  ✗ no-em-dashes                 em-dash on line 1 col 27
+  ✗ no-em-dashes                 em-dash on line 3 col 69
+  ✗ no-em-dashes                 em-dash on line 5 col 131
+  ✗ no-em-dashes                 em-dash on line 20 col 171
+  ✗ no-forbidden-words           "game-changing" (globally_banned_words) on line 1 col 31
+  ✗ no-forbidden-words           "transformative" (globally_banned_words) on line 3 col 73
+  ✗ no-forbidden-words           "cutting-edge" (globally_banned_words) on line 3 col 89
+  ✗ no-forbidden-words           "Artificial intelligence is fundamentally reshaping" (ai_era_clutter) on line 5 col 1
+  ✗ no-forbidden-words           "purpose-built system" (abstract_noun_clusters) on line 5 col 135
+  ✗ no-forbidden-words           "shared, structured environment" (abstract_noun_clusters) on line 5 col 201
+  ✗ no-forbidden-words           "revolutionary" (globally_banned_words) on line 7 col 28
+  ✗ no-forbidden-words           "innovative" (globally_banned_words) on line 9 col 20
+  ✗ no-forbidden-words           "robust" (globally_banned_words) on line 9 col 32
+  ✗ no-forbidden-words           "seamless" (globally_banned_words) on line 9 col 44
+  ✗ no-forbidden-words           "harness the power of" (ai_era_clutter) on line 9 col 89
+  ✗ no-forbidden-words           "holistic" (globally_banned_words) on line 9 col 158
+  ✗ no-forbidden-words           "ecosystem" (globally_banned_words) on line 9 col 243
+  ✗ no-forbidden-words           "leverage" (globally_banned_words) on line 13 col 3
+  ✗ no-forbidden-words           "relentless focus" (abstract_noun_clusters) on line 15 col 34
+  ✗ no-forbidden-words           "fast execution" (abstract_noun_clusters) on line 15 col 55
+  ...
+  ⚠ max-sentence-length          33% of sentences over 25 words (limit 30%)
+
+1 file checked, 40 block violations, 1 warning. FAILED.
+```
+
+40 block violations across 5 forbidden-word categories. The build exits 1. The PR is unmergeable until the violations are fixed.
 
 The merged `main` branch has [`examples/good-post.md`](./examples/good-post.md) — a Linear-flavored post on the same topic (Linear Agent GA) that passes the same firewall.
 
