@@ -1,7 +1,7 @@
 {
   "brand": "Linear",
   "schema_version": 1,
-  "_comment": "Structural and stylistic rules. Each rule has an id, a level, and a description. The linter (codex-lint.mjs) reads this file alongside forbidden.json. Rules at level=block fail CI; rules at level=warn surface in the log but pass.",
+  "_comment": "Structural and stylistic rules. Each rule has an id, a level, and a description. The linter (foundrkit-lint.mjs) reads this file alongside forbidden.json. Rules at level=block fail CI; rules at level=warn surface in the log but pass.",
   "rules": [
     {
       "id": "no-em-dashes",

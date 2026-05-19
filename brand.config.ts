@@ -1,5 +1,5 @@
 /**
- * Sample Founder Codex — Linear.
+ * Sample Foundrkit — Linear.
  *
  * The brand-level language constants any AI writing assistant should
  * load before drafting copy for this brand. Single source of truth for
@@ -12,25 +12,25 @@
  * extracted from the live site at scan time (see ./examples/bad-post.md
  * for the slop pattern, ./examples/good-post.md for the target voice).
  *
- * Sister files: ./codex.rules.json, ./forbidden.json, ./CLAUDE.md.
+ * Sister files: ./foundrkit.rules.json, ./forbidden.json, ./CLAUDE.md.
  */
 
-export interface CodexAxis {
+export interface FoundrkitAxis {
   readonly name: string;
   readonly score: number;
   readonly note: string;
 }
 
-export interface BrandCodex {
+export interface BrandFoundrkit {
   readonly brand: string;
   readonly website: string;
   readonly voiceParagraph: string;
-  readonly axes: readonly CodexAxis[];
+  readonly axes: readonly FoundrkitAxis[];
   readonly registerConstraints: readonly string[];
   readonly approvedPatterns: readonly string[];
 }
 
-export const codex: BrandCodex = {
+export const foundrkit: BrandFoundrkit = {
   brand: "Linear",
   website: "https://linear.app/",
 

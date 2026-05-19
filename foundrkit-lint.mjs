@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
- * codex-lint — the firewall the GitHub Action runs on every PR.
+ * foundrkit-lint — the firewall the GitHub Action runs on every PR.
  *
- * Reads codex.rules.json + forbidden.json and applies them to one or
- * more markdown files. Exits 0 if every file passes every block rule.
- * Exits 1 if any block rule fires. Warn rules surface in the log but
- * don't fail CI.
+ * Reads foundrkit.rules.json + forbidden.json and applies them to one
+ * or more markdown files. Exits 0 if every file passes every block
+ * rule. Exits 1 if any block rule fires. Warn rules surface in the log
+ * but don't fail CI.
  *
  * Usage:
- *   node codex-lint.mjs <file> [<file> ...]
+ *   node foundrkit-lint.mjs <file> [<file> ...]
  *
  * Output format is intentionally human-readable in CI logs:
  *
@@ -28,7 +28,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const RULES = JSON.parse(readFileSync(resolve(HERE, "codex.rules.json"), "utf8"));
+const RULES = JSON.parse(readFileSync(resolve(HERE, "foundrkit.rules.json"), "utf8"));
 const FORBIDDEN = JSON.parse(readFileSync(resolve(HERE, "forbidden.json"), "utf8"));
 
 // Flatten all forbidden categories into one case-insensitive list,
@@ -212,7 +212,7 @@ function report(results) {
 
 const targets = process.argv.slice(2);
 if (targets.length === 0) {
-  console.error("usage: node codex-lint.mjs <file> [<file> ...]");
+  console.error("usage: node foundrkit-lint.mjs <file> [<file> ...]");
   process.exit(2);
 }
 

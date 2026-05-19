@@ -1,4 +1,4 @@
-name: codex-lint
+name: foundrkit-lint
 
 # Runs only on PR events (not push) so a stranger can't burn free-tier
 # minutes by force-pushing to a fork.
@@ -10,10 +10,10 @@ on:
       - "*.md"
       - "*.mdx"
       - "brand.config.ts"
-      - "codex.rules.json"
+      - "foundrkit.rules.json"
       - "forbidden.json"
-      - "codex-lint.mjs"
-      - ".github/workflows/codex-lint.yml"
+      - "foundrkit-lint.mjs"
+      - ".github/workflows/foundrkit-lint.yml"
 
 permissions:
   contents: read
@@ -62,4 +62,4 @@ jobs:
 
       - name: Run the firewall
         if: steps.changed.outputs.files != ''
-        run: node codex-lint.mjs ${{ steps.changed.outputs.files }}
+        run: node foundrkit-lint.mjs ${{ steps.changed.outputs.files }}

@@ -1,6 +1,6 @@
 {
-  "$schema": "./codex.rules.json",
-  "_comment": "Words and phrases that cannot appear in Linear copy. The linter (codex-lint.mjs) reads this file. Categories are organizational only; all entries are equally blocking.",
+  "$schema": "./foundrkit.rules.json",
+  "_comment": "Words and phrases that cannot appear in Linear copy. The linter (foundrkit-lint.mjs) reads this file. Categories are organizational only; all entries are equally blocking.",
   "globally_banned_words": [
     "leverage",
     "synergy",
