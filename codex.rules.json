@@ -1,0 +1,38 @@
+{
+  "brand": "Linear",
+  "schema_version": 1,
+  "_comment": "Structural and stylistic rules. Each rule has an id, a level, and a description. The linter (codex-lint.mjs) reads this file alongside forbidden.json. Rules at level=block fail CI; rules at level=warn surface in the log but pass.",
+  "rules": [
+    {
+      "id": "no-em-dashes",
+      "level": "block",
+      "description": "No em-dashes (—) or &mdash; HTML entities. Use periods, commas, or colons. Em-dashes are the single most reliable AI tell."
+    },
+    {
+      "id": "no-forbidden-words",
+      "level": "block",
+      "description": "No word or phrase from forbidden.json. The list covers globally-banned SaaS clichés, AI-era clutter, enthusiasm verbs, abstract noun clusters, and filler modifiers."
+    },
+    {
+      "id": "max-sentence-length",
+      "level": "warn",
+      "description": "Median sentence length should stay under 20 words. Long sentences slow Linear's punchy register. Warns if more than 30% of sentences exceed 25 words.",
+      "params": { "max_words": 25, "max_percent_over": 30 }
+    },
+    {
+      "id": "no-three-adjective-stacks",
+      "level": "warn",
+      "description": "Avoid stacking three or more adjectives in a row (e.g. 'fast, scalable, secure platform'). One adjective with a noun usually carries the same signal."
+    },
+    {
+      "id": "concrete-subjects",
+      "level": "warn",
+      "description": "Prefer concrete subjects (named features, named teams, named numbers) over abstract noun phrases ('the system', 'our approach', 'the solution'). Warns when sentences begin with three or more consecutive abstract-noun subjects."
+    },
+    {
+      "id": "no-trailing-cta-cliche",
+      "level": "warn",
+      "description": "End posts with a specific next step, not a hedge. Block phrases like 'reach out', 'learn more', 'get in touch' when used as the closing line."
+    }
+  ]
+}

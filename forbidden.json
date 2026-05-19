@@ -1,0 +1,58 @@
+{
+  "$schema": "./codex.rules.json",
+  "_comment": "Words and phrases that cannot appear in Linear copy. The linter (codex-lint.mjs) reads this file. Categories are organizational only; all entries are equally blocking.",
+  "globally_banned_words": [
+    "leverage",
+    "synergy",
+    "seamless",
+    "robust",
+    "transformative",
+    "game-changing",
+    "game changer",
+    "revolutionary",
+    "empowering",
+    "holistic",
+    "cutting-edge",
+    "cutting edge",
+    "innovative",
+    "ecosystem",
+    "paradigm"
+  ],
+  "ai_era_clutter": [
+    "Artificial intelligence is fundamentally reshaping",
+    "AI is transforming",
+    "In today's fast-paced",
+    "In the modern landscape",
+    "the future of work",
+    "supercharge",
+    "harness the power of",
+    "unlock the potential",
+    "AI-powered",
+    "AI-driven"
+  ],
+  "enthusiasm_verbs": [
+    "thrilled",
+    "excited",
+    "delighted",
+    "proud to announce",
+    "thrilled to share",
+    "passionate about"
+  ],
+  "abstract_noun_clusters": [
+    "shared, structured environment",
+    "purpose-built system",
+    "relentless focus",
+    "fast execution",
+    "deep care",
+    "software craftsmanship",
+    "next-generation",
+    "best-in-class"
+  ],
+  "filler_modifiers": [
+    "very",
+    "really",
+    "quite",
+    "truly",
+    "literally"
+  ]
+}

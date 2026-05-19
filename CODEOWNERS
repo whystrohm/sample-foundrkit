@@ -1,0 +1,7 @@
+# Every file in this repo requires @whystrohm review before merge.
+# Stops drive-by PRs from a stranger's fork from getting approved or
+# merged without the maintainer seeing them. The bad-PR demo PR is
+# the only intentional exception — it stays open as a permanent
+# firewall demonstration and never merges.
+
+* @whystrohm

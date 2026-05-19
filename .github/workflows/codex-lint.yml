@@ -1,0 +1,58 @@
+name: codex-lint
+
+# Runs only on PR events (not push) so a stranger can't burn free-tier
+# minutes by force-pushing to a fork.
+on:
+  pull_request:
+    paths:
+      - "examples/**/*.md"
+      - "examples/**/*.mdx"
+      - "*.md"
+      - "*.mdx"
+      - "brand.config.ts"
+      - "codex.rules.json"
+      - "forbidden.json"
+      - "codex-lint.mjs"
+      - ".github/workflows/codex-lint.yml"
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Find changed markdown
+        id: changed
+        run: |
+          set -e
+          # Compare against the base of the PR, fall back to the default
+          # branch if --base isn't available (e.g. when triggered manually).
+          BASE="${{ github.event.pull_request.base.sha }}"
+          if [ -z "$BASE" ]; then BASE="origin/main"; fi
+          git fetch origin "${{ github.event.pull_request.base.ref }}" --depth=1 2>/dev/null || true
+          FILES=$(git diff --name-only "$BASE"...HEAD -- '*.md' '*.mdx' 2>/dev/null || true)
+          if [ -z "$FILES" ]; then
+            echo "No markdown changes in this PR — skipping lint."
+            echo "files=" >> "$GITHUB_OUTPUT"
+          else
+            echo "Will lint:"
+            echo "$FILES"
+            # Pass as space-separated for the next step.
+            JOINED=$(echo "$FILES" | tr '\n' ' ')
+            echo "files=$JOINED" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run the firewall
+        if: steps.changed.outputs.files != ''
+        run: node codex-lint.mjs ${{ steps.changed.outputs.files }}
