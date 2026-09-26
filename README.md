@@ -34,8 +34,9 @@ sample-foundrkit/
 │                                  Zero dependencies, runs on Node 20+
 ├─ CODEOWNERS                   ← every PR routes to @whystrohm
 ├─ examples/
-│  ├─ good-post.md              ← Linear-flavored draft that PASSES
-│  └─ bad-post.md               ← deliberately slop draft that FAILS
+│  └─ good-post.md              ← Linear-flavored draft that PASSES
+│                                  (bad-post.md, the draft that FAILS,
+│                                  lives on the PR #1 demo branch)
 └─ .github/workflows/
    └─ foundrkit-lint.yml        ← runs the linter on every PR
 ```
@@ -73,7 +74,7 @@ There's a permanent open pull request on this repo that demonstrates the firewal
 
 The PR adds `examples/bad-post.md` with deliberate violations. The Action runs and fails. The PR is not mergeable. It stays open forever as the demonstration.
 
-![foundrkit-lint Action failed on PR #1, 40 violations, status Failure](./firewall-demo-failed-action.png)
+![GitHub Actions run of foundrkit-lint on PR #1: status Failure, the lint job exited with code 1](./firewall-demo-failed-action.png)
 
 What the CI log shows (excerpted):
 
@@ -117,6 +118,7 @@ Open both posts side-by-side. The difference between the brand sounding like its
 git clone https://github.com/whystrohm/sample-foundrkit.git
 cd sample-foundrkit
 node foundrkit-lint.mjs examples/good-post.md   # exit 0
+git switch bad-post-demo                        # PR #1 branch, holds bad-post.md
 node foundrkit-lint.mjs examples/bad-post.md    # exit 1
 ```
 
